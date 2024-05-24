@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>3508918.ico</ApplicationIcon>
+    <ApplicationIcon>iconNew.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -84,6 +84,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="3508918.ico" />
+    <Content Include="icon.ico" />
+    <Content Include="iconNew.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
