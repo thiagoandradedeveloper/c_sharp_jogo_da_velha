@@ -23,6 +23,7 @@ namespace teste
             InitializeComponent();
         }
 
+
         private void finalizar(){
             jogando = false;
             jogar   = false;
@@ -44,63 +45,78 @@ namespace teste
                 MessageBox.Show(vez_jogador + " Venceu!!!");
                 finalizar();
             }
-            if ((button4.Text == button5.Text) && (button4.Text == button6.Text) && button4.Text != "" && button5.Text != "" && button6.Text != "")
+            else if ((button4.Text == button5.Text) && (button4.Text == button6.Text) && button4.Text != "" && button5.Text != "" && button6.Text != "")
             {
                 MessageBox.Show(vez_jogador + " Venceu!!!");
                 finalizar();
             }
-            if ((button7.Text == button8.Text) && (button7.Text == button9.Text) && button7.Text != "" && button8.Text != "" && button9.Text != "")
+            else if ((button7.Text == button8.Text) && (button7.Text == button9.Text) && button7.Text != "" && button8.Text != "" && button9.Text != "")
             {
                 MessageBox.Show(vez_jogador + " Venceu!!!");
                 finalizar();
             }
-            if ((button1.Text == button4.Text) && (button1.Text == button7.Text) && button1.Text != "" && button4.Text != "" && button7.Text != "")
+            else if ((button1.Text == button4.Text) && (button1.Text == button7.Text) && button1.Text != "" && button4.Text != "" && button7.Text != "")
             {
                 MessageBox.Show(vez_jogador + " Venceu!!!");
                 finalizar();
             }
-            if ((button2.Text == button5.Text) && (button2.Text == button8.Text) && button2.Text != "" && button5.Text != "" && button8.Text != "")
+            else if ((button2.Text == button5.Text) && (button2.Text == button8.Text) && button2.Text != "" && button5.Text != "" && button8.Text != "")
             {
                 MessageBox.Show(vez_jogador + " Venceu!!!");
                 finalizar();
             }
-            if ((button3.Text == button6.Text) && (button3.Text == button9.Text) && button3.Text != "" && button6.Text != "" && button9.Text != "")
+            else if ((button3.Text == button6.Text) && (button3.Text == button9.Text) && button3.Text != "" && button6.Text != "" && button9.Text != "")
             {
                 MessageBox.Show(vez_jogador + " Venceu!!!");
                 finalizar();
             }
-            if ((button1.Text == button5.Text) && (button1.Text == button9.Text) && button1.Text != "" && button5.Text != "" && button9.Text != "")
+            else if ((button1.Text == button5.Text) && (button1.Text == button9.Text) && button1.Text != "" && button5.Text != "" && button9.Text != "")
             {
                 MessageBox.Show(vez_jogador + " Venceu!!!");
                 finalizar();
             }
-            if ((button3.Text == button5.Text) && (button3.Text == button7.Text) && button3.Text != "" && button5.Text != "" && button7.Text != "")
+            else if ((button3.Text == button5.Text) && (button3.Text == button7.Text) && button3.Text != "" && button5.Text != "" && button7.Text != "")
             {
                 MessageBox.Show(vez_jogador + " Venceu!!!");
                 finalizar();
+            }
+            else
+            {
+                if (button1.Text != "" && button2.Text != "" && button3.Text != "" && button4.Text != "" && button5.Text != "" && button6.Text != "" && button7.Text != "" && button8.Text != "" && button9.Text != "")
+                {
+                    MessageBox.Show("Deu velha, ninguém venceu!!!");
+                    finalizar();
+                }
             }
         }
 
         private int metodoNumeroAleatorio()
         {
-            int numeroAleatorio = randomNumber.Next(1, 9);
+            int numeroAleatorio;
 
-            if (numeros[numeroAleatorio] != 0)
+            // Tentar encontrar um número aleatório que corresponda a um botão vazio
+            do
             {
-                if (button1.Text == "") return 1;
-                else if (button2.Text == "") return 2;
-                else if (button3.Text == "") return 3;
-                else if (button4.Text == "") return 4;
-                else if (button5.Text == "") return 5;
-                else if (button6.Text == "") return 6;
-                else if (button7.Text == "") return 7;
-                else if (button8.Text == "") return 8;
-                else if (button9.Text == "") return 9;
-                else return 0;
-            }
-            else
+                numeroAleatorio = randomNumber.Next(1, 10); // Gera um número de 1 a 9 (inclusivo)
+            } while (IsButtonOccupied(numeroAleatorio));
+
+            return numeroAleatorio;
+        }
+
+        private bool IsButtonOccupied(int numeroAleatorio)
+        {
+            switch (numeroAleatorio)
             {
-                return numeroAleatorio;
+                case 1: return !string.IsNullOrEmpty(button1.Text);
+                case 2: return !string.IsNullOrEmpty(button2.Text);
+                case 3: return !string.IsNullOrEmpty(button3.Text);
+                case 4: return !string.IsNullOrEmpty(button4.Text);
+                case 5: return !string.IsNullOrEmpty(button5.Text);
+                case 6: return !string.IsNullOrEmpty(button6.Text);
+                case 7: return !string.IsNullOrEmpty(button7.Text);
+                case 8: return !string.IsNullOrEmpty(button8.Text);
+                case 9: return !string.IsNullOrEmpty(button9.Text);
+                default: return true; // Caso inesperado, tratar como ocupado
             }
         }
 
